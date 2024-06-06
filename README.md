@@ -8,15 +8,15 @@ Using it
 
 Just launch:
 
-$ make
+```$ make```
 
 Then, you have to create two directories:
 
-$ mkdir database logs
+```$ mkdir database logs```
 
 Finally, run the daemon with:
 
-$ ./troudukd
+```$ ./troudukd```
 
 Where is the client?
 --------------------
