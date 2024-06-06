@@ -1,0 +1,107 @@
+		-> CARTES <-
+
+Sommaire:
+1. Identification cartes
+2. Protocole
+3. Identification joueur
+
+1. Identification cartes
+------------------------
+	YX
+	X = { A(carreau), C(coeur), P(pique), T(trèfle) }
+	Y = { 1(3), 2(4), 3(5), 4(6), 5(7), 6(8), 7(9), 8(10), 9(J), A(D), B(K), C(A), D(2) }
+
+	Valeurs: 1(3), 2(4), 3(5), 4(6), 5(7), 6(8), 7(9), 8(10), 9(J), A(D), B(K), C(A), D(2)
+
+2. Protocole
+------------
+	User2server:
+	-----
+		NICK <version> :<login>		:connexion au serveur
+		LIST						:liste les parties
+		JOIN <jeu> :[pass]			:joindre un jeu
+		PART 						:quitter une partie (remplacement d'un joueur)
+		PLAY :<cartes>				:joue des cartes
+		MSG :<message>				:envoi un message
+CREATE <jeu> <reflexion> <speak?> <52c?> :[pass]:créer un jeu
+		DISTRIBUE					:distribue les cartes
+		PEUTPAS						:saute
+		QUIT						:bye
+		DONNER <carte(s)>			:ce que donnent les joueurs
+		PING						:ping?
+		PONG						:pong!
+		SERVERINFO					:demande des infos serveur
+		KICK <user>					:ejecte un user
+		DIE :<message>				:plante le serveur
+		WALL :<message>				:envoie un message à tout le monde
+		AUTH :<pass>				:se loguer
+		REGISTER <email> :<pass>	:reg un username
+		KILL <user> :<message>		:kill un user
+		USERLIST					:affiche la liste des users
+		STOP <0/1>					:arret du jeu actif ou non
+		STATS <RESET|SHOW|TOP5>		:affiche ou réinitialise les stats
+		WEB							:annonce qu'il vient de la part du site
+		REHASH						:actualise la conf
+	Server2user:
+	-------
+		SERVER <nom> :<version>		:identification
+		ERREUR :<message>			:message d'erreur (de protocole, donc la faute au client)
+		CONNECTED <nick>			:notification de connexion
+LIST <jeu> <52c?> <nb joueurs> <en jeu?> :<joueurs>	:liste un jeu, avec le nom des joueurs
+		LISTEND						:notifie la fin de la liste
+		JOINED <jeu> <ident>		:notification de join
+		RULES <reflexion> <52c?>	:règles (temps de reflexion, 52c ? 1:0)
+		DONE <cartes>				:distribue les cartes, exemple: DONE AA,C8,PK,TV,T8,C0,AQ,PA,CJ,P7
+		TOYOU						:indique que c'est à lui de jouer
+		:<login> JOIN <ident> <ia?>	:informe qu'un joueur vient d'arriver (ia? = 1 ou 0)
+		:<ident> PLAY <cartes>		:un joueur joue une/des carte(s), exemple: igor PLAY AA,PA
+		:<ident> PERSONNEPEU		:un joueur remporte le plie
+		:<ident> WIN <grade>		:un joueur n'a plus de cartes
+		:<login> MSG :<message>		:un joueur envoie un message
+		:<ident> PART				:un joueur part (ident est un login si le mec est en wait)
+		:<ident> DONNE <carte(s)>	:carte(s) que donne(nt) un joueur à un autre
+		:<ident> CANT				:un joueur ne peut pas jouer
+		:<ident> BEGIN				:un joueur commence
+		ADONNER <indice>			:doit donner, forme XY, x= {1,2} (cartes), y= {+,-} (hautes, basses)
+		WAIT <jeu> <joueurs>		:vous attendez la fin du jeu pour joindre la partie
+		ENDOFGAME <owner> :<joueurs>:joueurs mis sous forme: <ident>:<nbparties>:<pr>:<vpr>:<vtr>:<tr>:<score>
+		PING						:ping?
+		PONG						:pong!
+		MUSTLOGIN					:vous utilisez un pseudo reg, loguez vous
+		LOGIN <admin?>				:logué (admin ? 1 : 0)
+		SERVERINFO <a> <b> <c> :<uptime>:a est le nombre de clients actuels, b est le nombre
+						 de connexion qu'il y a eu, uptime est le temps depuis
+						 lequel le serveur est lancé, c est le nombre de parties
+		:<ident> KICK <victime>		:victime (ident) a été kické par ident
+		DIE <message>				:le serveur a été planté
+		:<nick> WALL :<message>		:envoie un message à tout le monde
+		MOTD :<ligne>				:ligne d'un motd
+		ENDOFMOTD					:fin du motd
+		:<login> WAITJOIN <ia>		:un waiter join (indique quel IA il va remplacer)
+		:<ident> STOP <0/1>			:arret du jeu
+		:<login> KILL :<message>	:vous vous etes fait kill
+USERLIST <nick> <user> <grade> <jeu actuel>	:liste un user (user: 0=anonyme, 1=user, 2=admin)
+		ENDOFUL						:fin de l'userlist
+STATS <RESETED|SHOW <nbparties>:<pr>:<vpr>:<vtr>:<tr>:<score>>	:result de STATS
+STATS TOP5 :<nick>:<nb>:<pr>:<vpr>:<vtr>:<tr>:<score>	:top5 des meilleurs joueurs
+		REHASHED					:rehashed
+
+                001 <pseudo>		:pseudonyme déjà pris
+                002 <jeu>			:un jeu porte déjà ce nom là
+                003 <jeu>			:le jeu n'existe pas
+                004 <jeu>			:plus de place
+                005 <pseudo>		:pseudonyme incorrect
+                006 <jeu>			:vous devez etre owner pour distribuer
+                007 <jeu>			:vous n'êtes pas en train de jouer
+                008 <jeu>			:vous êtes déjà en train de jouer
+                009 <jeu>			:une partie est déjà en cours
+                010 <+/->			:+ = serveur trop vieux, - = client trop vieux
+                011 <jeu>			:mot de passe incorrect
+                012 <nick>			:user introuvable
+
+3. Identification joueur
+------------------------
+	Dans une partie, pour identifier un joueur on a:
+	XY
+	X = { 0, 1, 2, 3}
+	Y = { 1(president), 2(vice president), 3(vice troudu), 4(troudu), 0(neutre) }

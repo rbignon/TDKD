@@ -1,0 +1,22 @@
+		-> A FAIRE <-
+
+General
+-------
+-améliorer l'IA
+-Vérifier les bugs du jeu à 52 cartes
+
+Serveur
+-------
+
+Client
+------
+-URGENT: corriger, bon sang de bonsoir, ce putain de bug qui fait disparaitre une carte
+-pas possible de selectionner une carte si tu n'as de toute façon pas le bon nombre
+-rajouter sons, animations... et le rendre plus convivial
+ (aussi (et surtout) avec de nouvelles icones plus belles)
+ 
+Long Terme
+----------
+-passer le serveur sous windobe, le fournir avec le client, et donc permettre de jouer en solo
+-inclure la possibilité de jouer avec un jeu de tarot
+-faire une version linux du client avec kylix

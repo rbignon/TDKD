@@ -1,0 +1,202 @@
+*** Changements dans TDKD et Trouduk:
+
+--> Release du client (v1.0)
+
+*28/01/2006
+-Serveur: petites modifications et correction de quelques bugs
+-commande REHASH
+
+--> Prérelease du client (v0.4)
+
+*24/12/2004
+-Serveur: correction d'un bug dans DONNER, il ne regardait que les sept premières cartes
+-Client: rajout de réinitialisateurs lors d'un join dans un nouveau jeu, car quand tu
+ quittais en pleine partie et que tu revenais le jeu pensait, par exemple, que tu devais
+ encore donner des cartes
+-Client: image du robot, du bouton KICK, de l'indicatif owner, de l'indicateur d'attente
+ (sablier) et du bouton distribuer modifiée
+-Client: affichage des ressources
+-Client: correction d'un petit bug dans l'affichage des users
+
+*23/12/2004
+-Serveur: la methode de PAUSE ne devrait plus poser de problèmes
+-Serveur: amélioration du system qui vérifiait si la carte à donner existe, maintenant il
+ vérifie si l'user a bien cette carte, le system d'avant était vraiment pouris et très
+ faillible
+-Serveur: jartage d'une boucle de merde dans user_play
+
+*21/12/2004
+-Implantation de la possibilité de jouer avec un jeu de 52 cartes !!
+-Client: system de pause theoriquement stable, même si il faut encore voir niveau serveur
+
+*12/12/2004
+-Serveur: IA, system pour quand il n'y a plus que deux joueurs en jeu et que l'adversaire n'a que
+ deux cartes max, réagit plus intelligeament qu'avant
+-Client: alégissement de la taille du client (1090ko à 975ko)
+-Client: cette foi, le client ne bug plus DU TOUT quand le serveur plante etc
+
+*11/12/2004
+-Serveur: logage
+
+*10/12/2004
+-Serveur: system qui empeche un même message de sortir deux fois de suite
+-Affichage du nombre de parties jouées
+
+*08/12/2004
+-Serveur: l'ia parle !
+-Serveur: création d'une session pour la page Web
+-Client: utilisation de tab dans Msg pour compléter un pseudo
+-Client: couleur rouge lors d'un hl
+
+*06/12/2004
+-Client: touche Fx sert pour la xième carte VISIBLE
+
+*05/12/2004
+-Affichage des stats pour les users
+-Possibilité de réinitialiser ses stats
+-Top5 des meilleurs joueurs
+-Client: utilisation du clavier pour jouer (raccourcis)
+
+*02/12/2004
+-Serveur: stats sauvegardées
+
+*01/12/2004
+-Client: créer le fichier d'erreur si il n'existe pas, lors du signalement de l'erreur
+-System de pause (l'owner peut faire une pause sur la partie)
+
+*30/11/2004
+-Client: affichage d'un message d'attente lors de l'affichage d'une liste
+
+*28/11/2004
+-Client: sauvegarde du mot de passe
+-Client: couleur des grades configurable
+-Client: possibilité de changer le derrière des cartes
+
+*23/11/2004
+-Serveur: création du fichier outils.c pour réunir les fonctions qui servent un peu à tout
+-Serveur: system de configuration
+-Serveur: usernames
+-Client: adaptation du system d'users (et des commandes admins) sur le client
+-Commandes KILL, USERLIST
+
+--> Prérelease du client (v0.3)
+
+*21/11/2004
+-Serveur: amélioration encore du system de mémorisation des cartes jouées
+-Création d'un system de message du jour
+-Envoi d'un message anonçant l'arrivée d'un joueur en waitlist et le joueur IA qu'il remplacera
+-Client: modification du system de configuration des couleurs: choix plus large
+-Client: correction bug qui empechait de lancer depuis un raccourci
+
+*20/11/2004
+-Client: correction du bug qui, lorsqu'un joueur a fini et que personne ne pouvait, fesait planter
+ le client
+-Client: suspention pour le moment du system d'historique des messages envoyés*
+-Client: correction (peut etre) de bugs qui affichent que c'est à toi de jouer à la fin d'une partie,
+ et du bug du PEUTPAS en trop
+-Serveur: introduction des stats de la partie, permettant à l'IA d'etre un rien moin conne
+-Client: correction bug qui permettait de cliquer sur certaines cartes jouées
+
+*16/11/2004
+-Client: correction du bug qui, lors d'un kick, laissait les cartes affichées
+
+*15/11/2004
+-Client: possibilité de régler la vitesse du jeu
+-Client: un timer permet d'éviter de devoir cliquer sur "je peux pas" quand c'est obligatoirement
+ impossible (possibilité de choisir si oui ou merde cette possibilitée est active)
+-Client: correction bug: lorsqu'on devait donner des cartes, qu'on en avait sélectionné mais qu'on
+ reçoit entre temps des cartes d'un autre joueur, le bouton OK était encore actif alors que les cartes
+ sélectionnées sont baissées
+-Client: messages envoyés ajoutés au ComboBox (possibilité de voir l'historique avec fleche du haut)
+
+--> Prérelease du client (v0.2p2)
+
+*10/11/2004
+-Client: sauvegarde des scores
+-Client: correction quelques petits bugs
+-Serveur: correction bug: dans leave_game(), si silence == true il envoyait pas de msg de part
+
+*09/11/2004
+-Client: affiche une fenetre avec les changements mis à jour lors d'un update
+-Client: les fichiers téléchargés mis à jour comprennent le ChangeLog.txt et le TODO.txt
+-Client: affiche les cartes jouées et reçu dans la StatusBar[0]
+
+*08/11/2004
+-Client: les cartes sont directement intégrées dans l'executable, ce qui cause son augmentation de
+ taille. Répertoire 'cartes' désormais inutile
+-Client: création d'un programme d'installation
+
+--> Prérelease du client (v0.2)
+
+*07/11/2004
+-Correction quelques bugs dans client et serveur
+-Client: plus de message du client "la connexion s'est terminée proprement"
+-Client: possibilitée de configurer la couleur de l'arrière plan de Form1
+-Client: possibilitée de configurer la couleur des polices
+
+*06/11/2004
+-Serveur: création commande DIE
+-Serveur: commande WALL
+-Client: easter egg
+-Client: system de mise à jour automatique (remanié plusieurs fois)
+-Serveur: ia: quand il lui reste des as et une seule valeur, elle joue les as et se débarasse du reste
+-Client: correction bug lors d'un kick
+-Serveur: correction bug: capable de jouer un as tout seul sur une paire
+
+*05/11/2004
+-Serveur: correction d'un bug dans leave_game() pour le kick, msg erreur mis dans part_game()
+-Client: correction d'un bug remarquable lors d'un kick: les cartes n'étaient pas freezées lors d'un
+ part en pleine partie
+
+*03/11/2004
+-Client: L'owner est maintenant désigné par une etoile devant son pseudo et seul lui a le bouton
+ distribuer actif
+-Ajout d'un system de kick pour l'owner
+
+*02/11/2004
+-Client: correction du bug de quand on close le client et qu'on relance, il a bien
+ effacé le contenu de la fenetre.
+-Client: quand on doit jouer, si le bouton OK est actif, le bouton "Peut pas" est inactif
+-Rajout d'un system d'uptime
+-Serveur: correction orthographique des noms des présidents IA (et correction petit bug de limite)
+-Serveur: correction d'un piti bug lors d'échange de cartes (causait plantage)
+-Serveur: correction d'un bug: lors d'un part, il envoyait tout au parteur et pas aux players
+-Client: ajout d'un system de stats (à revoir peut etre, quand je gagne trop j'ai trop d'avance:p)
+-Client: le bouton "Peut pas" est inactif si c'est moi qui commence
+
+*01/11/2004
+-Correction de quelques bugs
+
+*31/10/2004
+-Client: correction bug des deux boutons joins/parts
+-Client: correction du bug qui fesait planter le client quand le serveur plantait (messagedlg flood)
+
+*30/10/2004
+-Client: modification des stats: affichage dans un tableau et stats pour tous les joueurs
+-Client: restriction de redimentionnement de la fenetre principale
+-Client: création d'un system de configuration
+
+*29/10/2004
+-Client: ajout d'un system de statistiques en fin de chaques parties
+-Serveur: correction du system d'attribution de l'owner en fin de partie
+-Support de mots de passes pour les parties
+-Client: rajout de deux boutons pour créer ou rejoindre une partie
+-Affiche une icone devant le joueur si c'est une IA
+-Les IA ont maintenant un nom de président pris aléatoirement
+-Client: amélioration du system d'erreur
+-Serveur: légère amélioration de l'IA (ne joue plus d'AS ou de rois comme un con)
+-Serveur: amélioration IA: capable de casser avec AS ou roi si il a un triple
+ ou un quadruple derrière
+-Client: support du départ des users dans la waitlist
+-Serveur: amélioration IA: réfléchi avant de donner n'importe quoi (président ou vice)
+
+--> Prérelease du client (v0.1)
+
+*27/10/2004
+-Client: ne se goure plus quant au "prochain joueur"
+-Serveur: correction d'un bug qui affichait une carte invalide
+-Client: correction du bug du "violation access" lors du rejoin dans une autre partie
+-Client: ajout d'un timer pour l'échange de cartes en début de partie
+
+*14/10/2004
+-Début de la programmation du jeu de carte "Le trou du cul" (client/serveur)
