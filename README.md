@@ -1,7 +1,7 @@
 Trou du cul (Asshole)
 =====================
 
-This is an ooold project I wrote in 2002-2004. The server runs is written in C, and the client is written in pascal.
+This is an ooold project I wrote in 2002-2004. The server runs on Linux and is written in C, and the client runs on Windows and is written in pascal.
 
 Using it
 --------
